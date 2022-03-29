@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+</head>
+<style>
+    .border{
+        position: relative;
+        height: 100px;
+        width: 100px;
+    }
+    .border::before{
+        content: '';
+        position: absolute;
+        height: 200%;
+        width: 200%;
+        transform: scale(0.5);
+        border: 1px solid black;
+        box-sizing: border-box;
+    }
+    .border1px{
+        height: 100px;
+        width: 100px;
+        margin: 10px;
+        border: 1px solid black;
+    }
+
+</style>
+<body>
+<div class="border"></div>
+<div class="border1px"></div>
+</body>
+</html>
