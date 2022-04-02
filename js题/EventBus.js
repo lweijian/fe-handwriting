@@ -1,5 +1,5 @@
 //事件发布订阅
-class EventEmitter {
+class EventBus {
     constructor(){
         this.event={}
     }
@@ -35,7 +35,7 @@ class EventEmitter {
 
 }
 // 使用如下
-const event = new EventEmitter();
+const event = new EventBus();
 
 const handle = (...rest) => {
   console.log(rest);
