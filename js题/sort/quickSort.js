@@ -32,3 +32,6 @@ export function quickSort(arr, leftBount,rightBount) {
     quickSort(arr,left+1,rightBount)
 }
 
+function swap(arr,i,j) {
+    [arr[i],arr[j]]=[arr[j],arr[i]]
+}
