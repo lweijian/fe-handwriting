@@ -12,7 +12,7 @@ class Scheduler {
 
     add(task) {
        return new Promise((resolve) => {
-           const resolveHandle=()=>{
+           const addRunTask=()=>{
                while (this.run.length<this.count&&this.queue.length>0){
                    const headCallback= this.queue.shift()
                    headCallback()
@@ -23,11 +23,12 @@ class Scheduler {
                task().then(()=>{
                    resolve()
                   this.run=this.run.filter(item=>item!==callback)
-                   resolveHandle()
+                   addRunTask()
                })
            }
           this.queue.push(callback)
-           resolveHandle()
+
+           addRunTask()
        })
     }
 }
