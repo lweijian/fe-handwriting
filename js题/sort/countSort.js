@@ -8,15 +8,17 @@
 
 
     for (let val of arr) {
-        tempArr[val]=1+tempArr[val]??0
+        tempArr[val]=tempArr[val]?tempArr[val]+1:1
     }
     let j=0;
 
-    for (let i = 0; i <tempArr.length ; i++) {
-        while (tempArr[i]>0){
-            arr[j++]= tempArr[i]-=1;
-        }
-    }
-
+     for (let [index,value] of tempArr.entries()) {
+         while (value>0){
+             arr[j++]=index
+             value--
+         }
+     }
+    return arr
 }
 
+console.log(countSort([4, 5, 2, 2, 4]));

@@ -1,14 +1,17 @@
 //插入排序
   function insertSort(arr) {
 
-    for (let i = 1; i < arr.length; i++) {
-        for (let j = i; j >= 1 && arr[j] < arr[j - 1]; j--) {
-            swap(arr, j, j - 1)
-        }
+    for (let i = 0; i < arr.length; i++) {
+        let temp=arr[i]
+        let j=i-1;
+      while (j>=0&&arr[j]>temp){
+          arr[j+1]=arr[j]
+          j--
+      }
+      arr[j+1]=temp
     }
-}
-function swap(arr,i,j) {
-    [arr[i],arr[j]]=[arr[j],arr[i]]
+    return arr
 }
 
 
+console.log(insertSort([1, 2, 3, 0]));

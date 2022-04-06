@@ -1,17 +1,22 @@
 //希尔排序
-export function shellSort(arr) {
-    let h = 1;
-    while (h <= Math.floor(arr.length / 3)) {
-        h = h * 3 + 1
-    }
-    for (let gap = h; gap > 0; gap = Math.floor((gap - 1) / 3)) {
-        for (let i = gap; i < arr.length; i++) {
-            for (let j = i; j - gap >= 0 && arr[j] < arr[j - gap]; j -= gap) {
-                swap(arr, j, j - gap)
+ function shellSort(arr) {
+    for (let gap=Math.floor(arr.length/2);gap>0;gap=Math.floor(gap/=2)){
+        for (let i = 0; i < arr.length; i++) {
+            let temp=arr[i]
+            let j=i-gap;
+            while (j>=0&&arr[j]>temp){
+                arr[j+gap]=arr[j]
+                j-=gap
             }
+            arr[j+gap]=temp
         }
     }
+
+    return arr
+
 }
 function swap(arr,i,j) {
     [arr[i],arr[j]]=[arr[j],arr[i]]
 }
+
+console.log(shellSort([1, 8,3,0,-1,11, 3]));
