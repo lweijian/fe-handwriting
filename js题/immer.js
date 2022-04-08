@@ -23,15 +23,16 @@ function immer(baseState, callback) {
     let handler = {
         get(target, prop) {
             let proxy = proxies.get(target[prop])
-            if (!proxy) {
+            if(!proxy&&target[prop]!==null&&typeof target[prop]==='object'){
                 proxy=createProxy(target[prop])
             }
-            return proxy
+            return proxy??target[prop]
         },
         set(target, prop, value) {
             let copy = {...target}
             copy[prop] = value
             copies.set(target, copy)
+            return true;
         }
     }
 
@@ -83,14 +84,18 @@ function immer(baseState, callback) {
         return base
     }
     function createProxy(base) {
-        const proxy = new Proxy(base, handler)
-        proxies.set(base,proxy)
-        return proxy
+        if(base!==null&&typeof base==='object'){
+            const proxy = new Proxy(base, handler)
+            proxies.set(base,proxy)
+            return proxy
+        }
+      return  base
+
     }
 
-    const proxy= createProxy(state)
+    const proxy= createProxy(baseState)
     callback(proxy)
-    return finalize(state)
+    return finalize(baseState)
 }
 
 function isPlainObject(value) {
@@ -108,3 +113,15 @@ console.log(copy.mother === state.mother)//true
 console.log(copy.father.mother === state.father.mother)//false
 console.log(copy === state)//false
 console.log(copy.father.mother.father === state.father.mother.father)//true
+
+const state2={
+    a: [],
+    p: {
+        x: 1
+    }
+}
+const copy2 = immer(state2, (draft) => {
+    draft.a.push(2);
+})
+console.log(state2.a === copy2.a )// false
+console.log(state2.p === copy2.p )// true
