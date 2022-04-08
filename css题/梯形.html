@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            background-color: #ecf1f6;
+            justify-content: center;
+            align-items: center;
+        }
+        .trapezoid{
+            border-radius: 0.5em 0 0 0.5em;
+            margin: 20px;
+            height: 70px;
+            width: 40px;
+            background: white;
+            transform-origin: right;
+            transform: perspective(10px) rotateY(352deg);
+            box-shadow:
+                    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.014),
+                    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02),
+                    12.5px 12.5px 10px rgba(0, 0, 0, 0.025),
+                    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
+                    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.036),
+                    100px 100px 80px rgba(0, 0, 0, 0.05)
+        ;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="trapezoid">
+    </div>
+</div>
+</body>
+</html>
