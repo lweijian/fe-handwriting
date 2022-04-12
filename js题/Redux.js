@@ -24,7 +24,7 @@ function createStore(reducer, initState, applyMiddleWare) {
 }
 
 
-export const applyMiddleWare = (...middleWares) => (oldCreateStore) => (reducer, initState) => {
+ const applyMiddleWare = (...middleWares) => (oldCreateStore) => (reducer, initState) => {
     const store = oldCreateStore(reducer, initState)
 
     const chain = middleWares.map(middleWare => middleWare(store.getState()))
@@ -68,7 +68,6 @@ function combine(reducers) {
         return state
     }
 }
-
 
 
 function compose(...fns) {

@@ -1,17 +1,17 @@
 function convert(str='') {
   let arr = str.split('');
   let len = arr.length;
-  let result = [];
+  let result ='';
   let count = 0;
   for (let i = len - 1; i >= 0; i--) {
     count++;
-    result.unshift(arr[i]);
+    result=arr[i]+result;
     if (count === 3 && i !== 0) {
-      result.unshift(',');
+      result=','+result;
       count = 0;
     }
   }
-  return result.join('');
+  return result
 }
 
 
