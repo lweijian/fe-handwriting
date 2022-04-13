@@ -32,9 +32,9 @@ function createStore(reducer, initState, applyMiddleWare) {
         return cur(pre)
     }), store.dispatch)
     return {
+        ...store,
         dispatch,
-        getState:store.getState,
-        subscribe:store.subscribe
+
     }
 }
 function reducer(state, action) {
