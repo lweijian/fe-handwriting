@@ -38,7 +38,7 @@ function mapTypeHandler(target, map) {
 }
 
 function symbolTypeHandler(target) {
-    Symbol(target.description)
+  return   Symbol(target.description)
 }
 
 function functionTypeHandler(target, thisArgs) {
@@ -72,7 +72,6 @@ function objectTypeHandler(target,map) {
     return  res
 }
 function cloneDeep(target, map = new WeakMap()) {
-    let tag = getType(target);
 
     switch (typeof target) {
         case "bigint":
@@ -86,6 +85,7 @@ function cloneDeep(target, map = new WeakMap()) {
         case "symbol":
           return   symbolTypeHandler(target)
     }
+    let tag = getType(target);
 
     switch (tag){
         case typeMap.set:
