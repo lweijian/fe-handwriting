@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+   body{
+     height: 100vh;
+     width: 100vw;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   .box{
+       height: 50px;
+       width: 100px;
+       overflow: hidden;
+       position: relative;
+   }
+   .block{
+       height: 100px;
+       width: 100px;
+       position: absolute;
+       top: -20px;
+       transform-origin:left;
+       transform: rotate(-67deg);
+       background-color: white;
+   }
+   .sector{
+     height: 100px;
+     width: 100px;
+     border-radius: 50%;
+     background-color: red;
+   }
+   .sector::before{
+     content: '';
+     height: 100px;
+   }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="sector"></div>
+    <div class="block"></div>
+</div>
+</body>
+</html>
